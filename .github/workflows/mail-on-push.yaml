@@ -1,0 +1,22 @@
+on:
+  push:
+jobs:
+  mail_on_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email to this address
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{MAIL_USERNAME}}
+          password: ${{MAIL_PASSWORD}}
+          subject: "ALARM, WE HAVE DETECTED SOMETHING BAD ${{github.repository}}"
+          body: |
+            Hello team,
+            Somehting bad has happened.
+
+            Suspect is: ${{github.event.pusher.name}}
+            Changes:
+          to: "jyri.vaitmaa@tthk.ee"
+          from: "Github actions"
