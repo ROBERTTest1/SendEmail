@@ -9,14 +9,14 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{MAIL_USERNAME}}
-          password: ${{MAIL_PASSWORD}}
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
           subject: "ALARM, WE HAVE DETECTED SOMETHING BAD ${{github.repository}}"
           body: |
             Hello team,
-            Somehting bad has happened.
+            Something bad has happened.
 
             Suspect is: ${{github.event.pusher.name}}
             Changes:
           to: "jyri.vaitmaa@tthk.ee"
-          from: "Github actions"
+          from: "Github action for ${{github.repository}}"
